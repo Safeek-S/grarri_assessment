@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foodorderapp/screens/cart_screen/cart_screen.dart';
-import 'package:foodorderapp/screens/empty_screen.dart';
+import 'package:foodorderapp/screens/empty_screen/empty_screen.dart';
 import 'package:foodorderapp/screens/menu_screen/menu_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../models/menu_item_model.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final List<MenuItem> menuItems;
+  const HomeScreen({super.key, required this.menuItems});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -97,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final List<Widget> screens = [
       const EmptyScreen(),
-      MenuScreen(addItemToCart: addItemToCart),
+      MenuScreen(addItemToCart: addItemToCart, menuItems: widget.menuItems,),
       CartScreen(
         items: const [],
         previousOrders: const [],
@@ -109,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
           color: Color(0xffF1F1F1),
         ),
         child: SizedBox(
-          height: 80,
+          height: 60.h,
           child: BottomNavigationBar(
             items: [
               BottomNavigationBarItem(
@@ -230,8 +231,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     if (cartItems.isNotEmpty)
                       Positioned(
-                        right: -20,
-                        top: -11,
+                        right: -15,
+                        top: -8,
                         child: Container(
                           padding: const EdgeInsets.all(5.0),
                           decoration: const BoxDecoration(

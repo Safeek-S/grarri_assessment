@@ -8,8 +8,9 @@ import 'widgets/category_based_menu_view.dart';
 import 'widgets/special_menu_tab_view.dart';
 
 class MenuScreen extends StatefulWidget {
+  final List<MenuItem> menuItems;
   final  Function(MenuItem) addItemToCart;
-  const MenuScreen({super.key, required this.addItemToCart});
+  const MenuScreen({super.key, required this.addItemToCart, required this.menuItems});
 
   @override
   State<MenuScreen> createState() => _MenuScreenState();
@@ -21,7 +22,7 @@ class _MenuScreenState extends State<MenuScreen> {
     return DefaultTabController(
       length: 4,
       child: Scaffold(
-        backgroundColor: Color(0xffF1F1F1),
+        backgroundColor: const Color(0xffF1F1F1),
         body: SafeArea(
           child: ListView(
             shrinkWrap: true,
@@ -30,7 +31,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 width: 360.w,
                 height: 110.h,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(10).w,
                   color: Colors.white, 
                   boxShadow: const [
                     BoxShadow(
@@ -146,12 +147,12 @@ class _MenuScreenState extends State<MenuScreen> {
                         textStyle: TextStyle(
                             fontSize: 14.sp, fontWeight: AppStyle.semiBoldFont),
                       ),
-                      labelPadding: EdgeInsets.symmetric(horizontal: 1.0),
+                      labelPadding: const EdgeInsets.symmetric(horizontal: 1.0),
                     
                       dividerColor: Colors.transparent,
-                      labelColor: Color(0xff3CBCB4),
-                      unselectedLabelColor: Color(0xff4A5662),
-                      indicatorColor: Color(0xff3CBCB4),
+                      labelColor: const Color(0xff3CBCB4),
+                      unselectedLabelColor: const Color(0xff4A5662),
+                      indicatorColor: const Color(0xff3CBCB4),
                       tabs: const [
                         Tab(text: 'Special'),
                         Tab(text: 'Main'),
@@ -169,22 +170,22 @@ class _MenuScreenState extends State<MenuScreen> {
                   child: TabBarView(
                  
                     children: [
-                       SpecialMenuTabView(addItemsToCart: widget.addItemToCart,),
+                       SpecialMenuTabView(addItemsToCart: widget.addItemToCart, menuItems: widget.menuItems,),
                       CategoryBasedMenuView(
                         title: 'Acai Bowl',
-                        menuItems: menuItems
+                        menuItems: widget.menuItems
                             .where((item) => item.category == "Main")
                             .toList(), addItemsToCart: widget.addItemToCart,
                       ),
                       CategoryBasedMenuView(
                         title: 'Acai Bowl',
-                        menuItems: menuItems
+                        menuItems: widget.menuItems
                             .where((item) => item.category == "Desserts")
                             .toList(), addItemsToCart: widget.addItemToCart,
                       ),
                       CategoryBasedMenuView(
                         title: '',
-                        menuItems: menuItems
+                        menuItems: widget.menuItems
                             .where((item) => item.category == "Beverages")
                             .toList(), addItemsToCart:widget.addItemToCart,
                       ),

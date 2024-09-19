@@ -19,8 +19,8 @@ class RoundedButton extends StatelessWidget {
             offset: const Offset(2, 2),
             blurRadius: 5,
           ),
-          const BoxShadow(
-            color: Color(0xFFFFFFE5),
+           BoxShadow(
+            color: Color(0xFFFFFFE5).withOpacity(0.9),
             offset: Offset(-2, -2),
             blurRadius: 4,
           ),

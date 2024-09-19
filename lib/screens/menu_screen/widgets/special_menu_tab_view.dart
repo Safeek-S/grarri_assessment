@@ -7,8 +7,9 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../utils.dart';
 
 class SpecialMenuTabView extends StatefulWidget {
+  final List<MenuItem> menuItems;
   final Function(MenuItem) addItemsToCart;
-  const SpecialMenuTabView({super.key, required this.addItemsToCart});
+  const SpecialMenuTabView({super.key, required this.addItemsToCart, required this.menuItems});
 
   @override
   State<SpecialMenuTabView> createState() => _SpecialMenuTabViewState();
@@ -28,16 +29,28 @@ class _SpecialMenuTabViewState extends State<SpecialMenuTabView> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10).w,
               color: const Color(0xffF1F1F1),
-              boxShadow: const [
+              boxShadow:  [
                 BoxShadow(
-                  color: Color(0xffD9D9D9E5),
+                  color: Color(0xffD9D9D9).withOpacity(0.9),
                   offset: Offset(5, 5),
                   blurRadius: 13,
                   spreadRadius: 0,
                 ),
                 BoxShadow(
-                  color: Color(0xFFFFFFFFE5),
+                  color: Color(0xFFFFFFFF).withOpacity(0.9),
                   offset: Offset(-5, -5),
+                  blurRadius: 10,
+                  spreadRadius: 0,
+                ),
+                BoxShadow(
+                  color: Color(0xffD9D9D9).withOpacity(0.2),
+                  offset: Offset(5, -5),
+                  blurRadius: 10,
+                  spreadRadius: 0,
+                ),
+                BoxShadow(
+                  color: Color(0xffD9D9D9).withOpacity(0.2),
+                  offset: Offset(-5, 5),
                   blurRadius: 10,
                   spreadRadius: 0,
                 ),
@@ -121,7 +134,7 @@ class _SpecialMenuTabViewState extends State<SpecialMenuTabView> {
               children: [
                 MenuItemsGrid(
                   addItemsToCart: widget.addItemsToCart,
-                  items: menuItems.where((item) => item.isSpecial).toList(),
+                  items: widget.menuItems.where((item) => item.isSpecial).toList(),
                 ),
               ],
             ),

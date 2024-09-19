@@ -50,10 +50,11 @@ class _OrderListState extends State<OrderList> {
             child: Column(
               children: [
                 ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: widget.items.length,
                   padding:
-                      const EdgeInsets.only(left: 8, right: 8, bottom: 15).w,
+                      const EdgeInsets.only(left: 8, right: 8, bottom: 30).w,
                   itemBuilder: (context, index) {
                     return Container(
                       margin: const EdgeInsets.only(bottom: 5),
@@ -131,7 +132,7 @@ class _OrderListState extends State<OrderList> {
                                   buttonWidgetPadding: const EdgeInsets.only(
                                           left: 4, right: 8, top: 5, bottom: 5)
                                       .w,
-                                  width: 90.w,
+                                  width: 93.w,
                                   height: 32.h,
                                   buttonWidget: Row(
                                     mainAxisAlignment:
@@ -146,7 +147,7 @@ class _OrderListState extends State<OrderList> {
                                       Expanded(
                                         child: Padding(
                                           padding:
-                                              const EdgeInsets.only(left: 4.0)
+                                              const EdgeInsets.only(left: 4.0,right: 2.0)
                                                   .w,
                                           child: Text(
                                             widget.items[index].count
@@ -186,6 +187,7 @@ class _OrderListState extends State<OrderList> {
                       style: GoogleFonts.ubuntu(
                         color: const Color(0xff76DFE5),
                         textStyle: TextStyle(
+                          decorationColor: Color(0xff76DFE5),
                             fontSize: 12.sp, fontWeight: AppStyle.mediumFont),
                         decoration: TextDecoration.underline,
                       ),
