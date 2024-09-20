@@ -71,10 +71,10 @@ class _CategoryBasedMenuViewState extends State<CategoryBasedMenuView> {
                                   fontWeight: AppStyle.mediumFont)),
                         ),
                         const SizedBox(width: 8),
-                        const Expanded(
+                         Expanded(
                           child: Divider(
                             thickness: 1.0,
-                            color: Color(0xff4A5662),
+                            color: Color(0xff4A5662).withOpacity(0.1),
                           ),
                         ),
                       ],

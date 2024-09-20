@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foodorderapp/models/menu_item_model.dart';
 import 'package:foodorderapp/screens/widgets/add_button.dart';
+import 'package:foodorderapp/screens/widgets/box_decoration_wrapper.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
@@ -14,87 +15,89 @@ class SpecialMenuListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return ContainerWrapper(
       height: 200.h,
       width: 160.w,
-      decoration: BoxDecoration(
-         color: const Color(0xffF1F1F1),
-    borderRadius: BorderRadius.circular(8.0).w, 
-    boxShadow:  [
-      
-      BoxShadow(
-        color: const Color(0xffCDCDCD).withOpacity(0.9), 
-        offset: const Offset(2, 2),
-        blurRadius: 5,
-        spreadRadius: 0,
-      ),
-      BoxShadow(
-        color: const Color(0xffFFFFFF).withOpacity(0.9),
-        offset: const Offset(-2, -2),
-        blurRadius: 4,
-        spreadRadius: 0,
-      ),
-      BoxShadow(
-        color: const Color(0xffCDCDCD).withOpacity(0.2),
-        offset: const Offset(2, -2),
-        blurRadius: 4,
-        spreadRadius: 0,
-      ),
-      BoxShadow(
-        color: const Color(0xffCDCDCD).withOpacity(0.2),
-        offset: const Offset(-2, 2),
-        blurRadius: 4,
-        spreadRadius: 0,
-      ),
-    ],
-      ),
-      child: Column(
+      color: const Color(0xffF1F1F1),
+      borderRadius: BorderRadius.circular(8.0).w,
+      boxShadowValues: [
+        {
+          'color': const Color(0xffCDCDCD).withOpacity(0.9),
+          'offset': const Offset(2, 2),
+          'blurRadius': 5.0,
+          'spreadRadius': 0.0,
+          'inset': true,
+        },
+        {
+          'color': const Color(0xffFFFFFF).withOpacity(0.9),
+          'offset': const Offset(-2, -2),
+          'blurRadius': 4.0,
+          'spreadRadius': 0.0,
+          'inset': true,
+        },
+        {
+          'color': const Color(0xffCDCDCD).withOpacity(0.2),
+          'offset': const Offset(2, -2),
+          'blurRadius': 4.0,
+          'spreadRadius': 0.0,
+          'inset': true,
+        },
+        {
+          'color': const Color(0xffCDCDCD).withOpacity(0.2),
+          'offset': const Offset(-2, 2),
+          'blurRadius': 4.0,
+          'spreadRadius': 0.0,
+          'inset': true,
+        },
+      ],
+      childWidget: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
-            flex: 2,
+          flex:5,
             child: Image.asset(
               menuItem!.imagePath,
               width: 160.w,
-              height: 128.h,
+              height: 140.h,
               fit: BoxFit.fill,
             ),
           ),
           5.verticalSpace,
-          Expanded(
-            flex: 1,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 8).w,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Image.asset(
-                    'lib/assets/images/veg.png',
-                    width: 16.w,
-                    height: 16.h,
-                  ),
-                  Flexible(
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 4).w,
-                      child: Text(
-                        menuItem!.name,
-                        overflow: TextOverflow.visible,
-                        maxLines: 3,
-                        style: GoogleFonts.ubuntu(
-                          color: const Color(0xff4A5662),
-                          textStyle: TextStyle(
-                              fontWeight: AppStyle.mediumFont, fontSize: 14.sp),
-                        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 8).w,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Image.asset(
+                'lib/assets/images/veg.png',
+                width: 16.w,
+                height: 16.h,
+              ),
+              Flexible(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 4).w,
+                  child: FittedBox(
+                    child: Text(
+                      menuItem!.name,
+                      overflow: TextOverflow.visible, // Ensure text does not overflow
+                      maxLines: 3,
+                      // textAlign: TextAlign.left, // Align the text to the left
+                      style: GoogleFonts.ubuntu(
+                        color: const Color(0xff4A5662),
+                        textStyle: TextStyle(
+                            fontWeight: AppStyle.mediumFont, fontSize: 14.sp),
                       ),
                     ),
                   ),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
-          7.verticalSpace,
+        ),
+
+        
           Padding(
-            padding: const EdgeInsets.only(left: 8, right: 8,bottom: 8).w,
+            padding: const EdgeInsets.only(left: 8, right: 8, bottom: 8,top: 8).w,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -106,7 +109,10 @@ class SpecialMenuListTile extends StatelessWidget {
                     color: const Color(0xff4A5662),
                   ),
                 ),
-                AddButton(addItemsToCart: callBack,menuItem: menuItem!,),
+                AddButton(
+                  addItemsToCart: callBack,
+                  menuItem: menuItem!,
+                ),
               ],
             ),
           ),

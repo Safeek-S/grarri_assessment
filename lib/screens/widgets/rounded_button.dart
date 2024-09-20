@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:foodorderapp/screens/widgets/box_decoration_wrapper.dart';
 
 class RoundedButton extends StatelessWidget {
   final IconData icon;
@@ -7,36 +8,37 @@ class RoundedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return ContainerWrapper(
       padding: const EdgeInsets.all(7).w,
-      decoration: BoxDecoration(
-        color: const Color(0xffF1F1F1),
-        shape: BoxShape.circle,
-        boxShadow: [
-         
-          BoxShadow(
-            color: const Color(0xffDEDEDE).withOpacity(0.9),
-            offset: const Offset(2, 2),
-            blurRadius: 5,
-          ),
-           BoxShadow(
-            color: Color(0xFFFFFFE5).withOpacity(0.9),
-            offset: Offset(-2, -2),
-            blurRadius: 4,
-          ),
-          BoxShadow(
-            color: const Color(0xffDEDEDE).withOpacity(0.2),
-            offset: const Offset(2, -2),
-            blurRadius: 4,
-          ),
-          BoxShadow(
-            color: const Color(0xffDEDEDE).withOpacity(0.2),
-            offset: const Offset(-2, 2),
-            blurRadius: 4,
-          ),
-        ],
-      ),
-      child: Icon(
+      color: const Color(0xffF1F1F1),
+      shape: BoxShape.circle,
+      boxShadowValues: [
+        {
+          "color": const Color(0xffDEDEDE).withOpacity(0.9),
+          "offset": const Offset(2, 2),
+          "blurRadius": 5.0,
+          "inset": true,
+        },
+        {
+          "color": Color(0xFFFFFFE5).withOpacity(0.9),
+          "offset": Offset(-2, -2),
+          "blurRadius": 4.0,
+          "inset": true,
+        },
+        {
+          "color": const Color(0xffDEDEDE).withOpacity(0.2),
+          "offset": const Offset(2, -2),
+          "blurRadius": 4.0,
+          "inset": true,
+        },
+        {
+          "color": const Color(0xffDEDEDE).withOpacity(0.2),
+          "offset": const Offset(-2, 2),
+          "blurRadius": 4.0,
+          "inset": true,
+        },
+      ],
+      childWidget: Icon(
         icon,
         size: 15.w,
         color: const Color(0xff3CBCB4),

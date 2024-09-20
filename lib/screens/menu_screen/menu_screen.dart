@@ -9,8 +9,9 @@ import 'widgets/special_menu_tab_view.dart';
 
 class MenuScreen extends StatefulWidget {
   final List<MenuItem> menuItems;
-  final  Function(MenuItem) addItemToCart;
-  const MenuScreen({super.key, required this.addItemToCart, required this.menuItems});
+  final Function(MenuItem) addItemToCart;
+  const MenuScreen(
+      {super.key, required this.addItemToCart, required this.menuItems});
 
   @override
   State<MenuScreen> createState() => _MenuScreenState();
@@ -32,20 +33,19 @@ class _MenuScreenState extends State<MenuScreen> {
                 height: 110.h,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10).w,
-                  color: Colors.white, 
+                  color: Colors.white,
                   boxShadow: const [
                     BoxShadow(
                       color: Color(0xffAEAEC0),
-                      offset:
-                          Offset(1.5, 1.5),
-                      blurRadius: 3, 
+                      offset: Offset(1.5, 1.5),
+                      blurRadius: 3,
                       spreadRadius: 0,
                     ),
                     BoxShadow(
                       color: Color(0xFFFFFFFF),
-                      offset: Offset(-1, -1), 
-                      blurRadius: 3, 
-                      spreadRadius: 0, 
+                      offset: Offset(-1, -1),
+                      blurRadius: 3,
+                      spreadRadius: 0,
                     ),
                   ],
                 ),
@@ -69,10 +69,11 @@ class _MenuScreenState extends State<MenuScreen> {
                               child: Text(
                                 "Sunrise Cafe",
                                 style: GoogleFonts.ubuntu(
-                                    color: const Color(0xff4A5662),
-                                    textStyle: TextStyle(
-                                        fontSize: 16.sp,
-                                        fontWeight: AppStyle.boldFont)),
+                                  color: const Color(0xff4A5662),
+                                  textStyle: TextStyle(
+                                      fontSize: 16.sp,
+                                      fontWeight: AppStyle.boldFont),
+                                ),
                               ),
                             ),
                             Container(
@@ -80,22 +81,18 @@ class _MenuScreenState extends State<MenuScreen> {
                               height: 30.h,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10.r),
-                                color: const Color(
-                                    0xffF1F1F1),
+                                color: const Color(0xffF1F1F1),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: const Color(0xAEAEC066).withOpacity(
-                                        0.4),
-                                    offset: const Offset(1.5,
-                                        1.5), 
-                                    blurRadius: 3, 
+                                    color: const Color(0xffAEAEC0)
+                                        .withOpacity(0.4),
+                                    offset: const Offset(1.5, 1.5),
+                                    blurRadius: 3,
                                   ),
                                   const BoxShadow(
-                                    color: Color(
-                                        0xFFFFFFFF), 
-                                    offset: Offset(-1,
-                                        -1),
-                                    blurRadius: 3, 
+                                    color: Color(0xFFFFFFFF),
+                                    offset: Offset(-1, -1),
+                                    blurRadius: 3,
                                   ),
                                 ],
                               ),
@@ -111,22 +108,18 @@ class _MenuScreenState extends State<MenuScreen> {
                               height: 30.h,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10.r),
-                                color: const Color(
-                                    0xffF1F1F1),
+                                color: const Color(0xffF1F1F1),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: const Color(0xAEAEC066).withOpacity(
-                                        0.4), 
-                                    offset: const Offset(1.5,
-                                        1.5), 
-                                    blurRadius: 3, 
+                                    color: const Color(0xffAEAEC0)
+                                        .withOpacity(0.4),
+                                    offset: const Offset(1.5, 1.5),
+                                    blurRadius: 3,
                                   ),
                                   const BoxShadow(
-                                    color: Color(
-                                        0xFFFFFFFF), 
-                                    offset: Offset(-1,
-                                        -1),
-                                    blurRadius: 3, 
+                                    color: Color(0xFFFFFFFF),
+                                    offset: Offset(-1, -1),
+                                    blurRadius: 3,
                                   ),
                                 ],
                               ),
@@ -140,15 +133,13 @@ class _MenuScreenState extends State<MenuScreen> {
                         ),
                       ),
                     ),
-
-                  
                     TabBar(
                       labelStyle: GoogleFonts.poppins(
+                        color: const Color(0xff4A5662),
                         textStyle: TextStyle(
                             fontSize: 14.sp, fontWeight: AppStyle.semiBoldFont),
                       ),
                       labelPadding: const EdgeInsets.symmetric(horizontal: 1.0),
-                    
                       dividerColor: Colors.transparent,
                       labelColor: const Color(0xff3CBCB4),
                       unselectedLabelColor: const Color(0xff4A5662),
@@ -168,26 +159,31 @@ class _MenuScreenState extends State<MenuScreen> {
                 child: SizedBox(
                   height: MediaQuery.sizeOf(context).height,
                   child: TabBarView(
-                 
                     children: [
-                       SpecialMenuTabView(addItemsToCart: widget.addItemToCart, menuItems: widget.menuItems,),
+                      SpecialMenuTabView(
+                        addItemsToCart: widget.addItemToCart,
+                        menuItems: widget.menuItems,
+                      ),
                       CategoryBasedMenuView(
                         title: 'Acai Bowl',
                         menuItems: widget.menuItems
                             .where((item) => item.category == "Main")
-                            .toList(), addItemsToCart: widget.addItemToCart,
+                            .toList(),
+                        addItemsToCart: widget.addItemToCart,
                       ),
                       CategoryBasedMenuView(
                         title: 'Acai Bowl',
                         menuItems: widget.menuItems
                             .where((item) => item.category == "Desserts")
-                            .toList(), addItemsToCart: widget.addItemToCart,
+                            .toList(),
+                        addItemsToCart: widget.addItemToCart,
                       ),
                       CategoryBasedMenuView(
                         title: '',
                         menuItems: widget.menuItems
                             .where((item) => item.category == "Beverages")
-                            .toList(), addItemsToCart:widget.addItemToCart,
+                            .toList(),
+                        addItemsToCart: widget.addItemToCart,
                       ),
                     ],
                   ),

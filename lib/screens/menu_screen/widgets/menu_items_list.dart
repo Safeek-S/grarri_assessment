@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foodorderapp/screens/widgets/add_button.dart';
+import 'package:foodorderapp/screens/widgets/box_decoration_wrapper.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../models/menu_item_model.dart';
@@ -31,42 +32,45 @@ class MenuItemsList extends StatelessWidget {
             shrinkWrap: true,
             itemCount: menuItems.length,
             itemBuilder: (context, index) {
-              return Container(
+              return ContainerWrapper(
                 height: 87.h,
                 width: 328.w,
                 margin: const EdgeInsets.all(8).w,
                 padding: const EdgeInsets.all(8).w,
-                decoration: BoxDecoration(
-                  color: const Color(0xffF6F6F6),
-                  borderRadius: BorderRadius.circular(8.0).w,
-                  boxShadow: [
-                    BoxShadow(
-                      color: const Color(0xFFDCDCDC).withOpacity(0.9),
-                      offset: const Offset(2, 2),
-                      blurRadius: 5,
-                      spreadRadius: 0,
-                    ),
-                    BoxShadow(
-                      color: const Color(0xFFFFFFFF).withOpacity(0.9),
-                      offset: const Offset(-2, -2),
-                      blurRadius: 4,
-                      spreadRadius: 0,
-                    ),
-                    BoxShadow(
-                      color: const Color(0xFFDCDCDC).withOpacity(0.2),
-                      offset: const Offset(2, -2),
-                      blurRadius: 4,
-                      spreadRadius: 0,
-                    ),
-                    BoxShadow(
-                      color: const Color(0xFFDCDCDC).withOpacity(0.2),
-                      offset: const Offset(-2, 2),
-                      blurRadius: 4,
-                      spreadRadius: 0,
-                    ),
-                  ],
-                ),
-                child: Row(
+                color: const Color(0xffF6F6F6),
+                borderRadius: BorderRadius.circular(8.0).w,
+                boxShadowValues: [
+                  {
+                    "color": const Color(0xFFDCDCDC).withOpacity(0.9),
+                    "offset": const Offset(2, 2),
+                    "blurRadius": 5.0,
+                    "spreadRadius": 0.0,
+                    "inset": true,
+                  },
+                  {
+                    "color": const Color(0xFFFFFFFF).withOpacity(0.9),
+                    "offset": const Offset(-2, -2),
+                    "blurRadius": 4.0,
+                    "spreadRadius": 0.0,
+                    "inset": true,
+                    
+                  },
+                  {
+                    "color": const Color(0xFFDCDCDC).withOpacity(0.2),
+                    "offset": const Offset(2, -2),
+                    "blurRadius": 4.0,
+                    "spreadRadius": 0.0,
+                    "inset": true,
+                  },
+                  {
+                    "color": const Color(0xFFDCDCDC).withOpacity(0.2),
+                    "offset": const Offset(-2, 2),
+                    "blurRadius": 4.0,
+                    "spreadRadius": 0.0,
+                    "inset": true,
+                  }
+                ],
+                childWidget: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

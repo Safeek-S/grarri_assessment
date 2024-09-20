@@ -1,12 +1,34 @@
-class MenuItem {
+
+
+import 'package:mobx/mobx.dart';
+
+part 'menu_item_model.g.dart'; 
+
+class MenuItem = _MenuItem with _$MenuItem;
+
+abstract class _MenuItem with Store {
   final int id;
   final String name;
   final String category;
   final String imagePath;
+
+
   bool isSpecial;
+
+  @observable
   int count;
 
-  MenuItem({required this.id , required this.name, required this.category, this.count = 0, this.isSpecial = false, required this.imagePath});
+  _MenuItem({
+    required this.id,
+    required this.name,
+    required this.category,
+    this.count = 0,
+    this.isSpecial = false,
+    required this.imagePath,
+  });
+
+ 
+
   MenuItem copyWith({
     int? id,
     String? name,
@@ -23,5 +45,10 @@ class MenuItem {
       imagePath: imagePath ?? this.imagePath,
       isSpecial: isSpecial ?? this.isSpecial,
     );
+  }
+
+  @action 
+  void setCountValue(int count){
+    this.count = count;
   }
 }
